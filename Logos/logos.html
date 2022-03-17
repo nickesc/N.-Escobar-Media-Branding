@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8PBQNWMVB"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
         
+            gtag('config', 'G-M8PBQNWMVB');
+        </script>
         <title>Logos</title>
         
         <meta charset="UTF-8">
@@ -9,6 +16,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
         <link rel="stylesheet" href="/fonts/ibm-courier/fonts/IBM-Courier.css">
+        <script>
+            let darkMode = true;
+        </script>
         <style>
             
             body{
@@ -26,7 +36,8 @@
             }
             
             .container{
-                width:80%;
+                width:90%;
+                max-width: 1400px;
                 margin-left: auto;
                 margin-right: auto;
                 padding-bottom: 10vh;
@@ -62,9 +73,20 @@
             
             a{
                 color:#EF5252;
+                text-decoration: underline #EF5252 1px dotted;
             }
             a:hover{
                 color: #a93e3e;
+            }
+
+            td:hover{
+                padding:1vh;
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+            
+            td:active{
+                padding:.5vh;
+                background-color: rgba(0, 0, 0, 0.2);
             }
             
             red{
@@ -78,7 +100,6 @@
             }
             
             tagColor{
-                color: #D6D6D6;
                 font-weight:bold;
             }
             varColor{
@@ -92,14 +113,82 @@
                 color: #3C7BCEFF;
             }
             
+            #darkButton{
+                background-color:#eeeeee;
+                border: none;
+                width: 13ch;
+                height: 2em;
+                font-family: IBM Courier, monospace;
+                font-weight:bold;
+                color:#232326;
+                border-radius:5px;
+                
+            }
+            titl{
+                text-decoration: underline #EF5252 1px
+            }
+            
             
         </style>
         
+        
     </head>
-    <body>
     
-        <h1 style="font-size:3vw; font-style:italic; padding:1vh 3vw .3vh 3vw">N. Escobar Media and nickesc Logo Reference Sheet</h1>
-        <h2 style="font-size:2vw; font-style:italic; padding:0vh 0vw 0vh 6vw">by <a href = "https://nickesc.github.io">N. Escobar</a> / <a href = "https://nickesc.com">nickesc</a></h2>
+    
+    
+    <body id = "body">
+    
+        <h1 style="font-size:3vw; font-style:italic; padding:1vh 3vw .3vh 3vw"><titl>N. Escobar Media</titl> and <titl>nickesc</titl> Logo Reference Sheet</h1>
+        
+        <table style="padding:0vh 0vw 0vh 0vw; width: 90%; margin-left:auto;margin-right: auto">
+            <tr>
+                <th>
+                    <h2 style="font-size:2vw; font-style:italic; text-align:left">by <a href = "https://nickesc.github.io">N. Escobar</a> / <a href = "https://nickesc.com">nickesc</a></h2>
+                </th>
+                <th style="text-align:right">
+                    <label class="darkMode" >
+                        <button id = "darkButton" type="button" onclick="changeTheme()">Light Mode</button>
+                    </label>
+                </th>
+            </tr>
+        </table>
+        
+        
+        <script>
+            function changeTheme(){
+                
+                let backColor = "#181818"
+                let fontColor = "#FFF9F2"
+                let buttonColor = "#eeeeee"
+                let buttonFont = "#232326"
+                let msg = "Light Mode"
+                let styles = "td:hover{background-color: rgba(0, 0, 0, 0.2);} td:active{background-color: rgba(0, 0, 0, 0.25)}"
+                
+                
+                if(darkMode === true){
+                    buttonColor = "#181818"
+                    buttonFont = "#FFF9F2"
+                    backColor = "#eeeeee"
+                    fontColor = "#232326"
+                    msg = "Dark Mode"
+                    styles = "td:hover{background-color: rgba(0, 0, 0, 0.05);} td:active{background-color: rgba(0, 0, 0, 0.1)}"
+                }
+    
+                let style=document.createElement('style');
+                style.appendChild(document.createTextNode(styles));
+                document.getElementsByTagName('head')[0].appendChild(style);
+                
+                let body = document.getElementById("body")
+                let button = document.getElementById("darkButton")
+                body.style.color = fontColor;
+                body.style.backgroundColor = backColor;
+                button.innerHTML = msg;
+                button.style.backgroundColor = buttonColor
+                button.style.color = buttonFont
+                
+                darkMode = !darkMode
+            }
+        </script>
         
         <div class ="container">
             
@@ -107,16 +196,28 @@
             <div class = "palette" style="text-align:center">
                 <h1 style="text-align:left">Logo palette</h1>
                 <div class = "paletteContainer">
-                    <img src="palette.png" alt="Palette"  style="display:inline-block;width:100%;max-height:40vh">
+                    
+                    <img src="palette.png" alt="Palette"  style="display:inline-block;width:100%;max-height:40vh" onclick="updateClipboard('help')" >
+                    <script>
+                        function updateClipboard(newClip) {
+                            navigator.clipboard.writeText(newClip).then(function() {
+                                console.log("suc")
+                                /* clipboard successfully set */
+                            }, function() {
+                                console.log("fal")
+                                /* clipboard write failed */
+                            });
+                        }
+                    </script>
                     <table>
                         <tr>
-                            <td class = "paletteCell">#232326</td><td class = "paletteCell">#EF5252</td><td class = "paletteCell">#D6D6D6</td><td class = "paletteCell">#FFF9F2</td>
+                            <td class = "paletteCell" onclick="updateClipboard('232326')">#232326</td><td class = "paletteCell" onclick="updateClipboard('EF5252')">#EF5252</td><td class = "paletteCell" onclick="updateClipboard('D6D6D6')">#D6D6D6</td><td class = "paletteCell" onclick="updateClipboard('FFF9F2')">#FFF9F2</td>
                         </tr>
                         <tr>
-                            <td class = "paletteCell"><red>R: 35</red><br><green>G: 35</green><br><blue>B: 38</blue></td>
-                            <td class = "paletteCell"><red>R: 239</red><br><green>G: 82</green><br><blue>B: 82</blue></td>
-                            <td class = "paletteCell"><red>R: 214</red><br><green>G: 214</green><br><blue>B: 214</blue></td>
-                            <td class = "paletteCell"><red>R: 255</red><br><green>G: 249</green><br><blue>B: 242</blue></td>
+                            <td class = "paletteCell" onclick="updateClipboard('35,35,38')"><red>R: 35</red><br><green>G: 35</green><br><blue>B: 38</blue></td>
+                            <td class = "paletteCell" onclick="updateClipboard('239,82,82')"><red>R: 239</red><br><green>G: 82</green><br><blue>B: 82</blue></td>
+                            <td class = "paletteCell" onclick="updateClipboard('214,214,214')"><red>R: 214</red><br><green>G: 214</green><br><blue>B: 214</blue></td>
+                            <td class = "paletteCell" onclick="updateClipboard('255,249,242')"><red>R: 255</red><br><green>G: 249</green><br><blue>B: 242</blue></td>
                         </tr>
                     </table>
                 </div>
@@ -130,169 +231,205 @@
         
                 <table>
             
-                    <tr><th class = "head"><h2>Regular/Dark</h2></th><td></td><td></td></tr>
+                    <tr><th class = "head"><h2>Regular/Dark</h2></th><th></th><th></th></tr>
                     <tr>
                 
-                        <td>
+                        <td  onclick="updateClipboard('&lt;img class = &quot;logo nescobar-square&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-square.png?raw=true&quot; alt = &quot;nescobar-square&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-square" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square.png?raw=true" alt = "nescobar-square">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-dark.png?raw=true&quot; alt = &quot;nescobar-dark&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-logo" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-dark.png?raw=true" alt = "nescobar-dark">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-alt&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-alt-dark.png?raw=true&quot; alt = &quot;nescobar-alt-dark&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-alt" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-dark.png?raw=true" alt = "nescobar-alt-dark">
                         </td>
             
                     </tr>
                     <tr>
                 
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-square<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-square<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-square&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-square.png?raw=true&quot; alt = &quot;nescobar-square&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-square<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-square.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-square<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-dark.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-dark.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-dark<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-dark.png?raw=true&quot; alt = &quot;nescobar-dark&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-dark.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-dark.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-dark<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-alt<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-dark.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-dark.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-alt-dark<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-alt&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-alt-dark.png?raw=true&quot; alt = &quot;nescobar-alt-dark&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-alt<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-dark.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-alt-dark.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-alt-dark<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
             
                     </tr>
-                    <tr><th class = "head"><h2>Alt/Light</h2></th><td></td><td></td></tr>
+                    <tr><th class = "head"><h2>Alt/Light</h2></th><th></th><th></th></tr>
                     <tr>
                 
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-square&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-square-alt.png?raw=true&quot; alt = &quot;nescobar-square-alt&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-square" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-alt.png?raw=true" alt = "nescobar-square-alt">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-light.png?raw=true&quot; alt = &quot;nescobar-light&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-logo" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-light.png?raw=true" alt = "nescobar-light">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-alt&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-alt-light.png?raw=true&quot; alt = &quot;nescobar-alt-light&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-alt" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-light.png?raw=true" alt = "nescobar-alt-light">
                         </td>
             
                     </tr>
                     <tr>
                 
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-square<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-alt.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-alt.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-square-alt<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-square&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-square-alt.png?raw=true&quot; alt = &quot;nescobar-square-alt&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-square<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-alt.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-square-alt.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-square-alt<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-light.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-light.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-light<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-light.png?raw=true&quot; alt = &quot;nescobar-light&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-light.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-light.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-light<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-alt<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-light.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-light.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-alt-light<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-alt&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-alt-light.png?raw=true&quot; alt = &quot;nescobar-alt-light&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-alt<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-light.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-alt-light.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-alt-light<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
             
                     </tr>
             
-                    <tr><th class = "head"><h2>Dark Opaque</h2></th><td></td><td></td></tr>
+                    <tr><th class = "head"><h2>Dark Opaque</h2></th><th></th><th></th></tr>
                     <tr>
                 
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-square opaque-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-square-dark.png?raw=true&quot; alt = &quot;nescobar-square-dark&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-square opaque-logo" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-dark.png?raw=true" alt = "nescobar-square-dark">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-logo opaque-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-dark-opaque.png?raw=true&quot; alt = &quot;nescobar-dark-opaque&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-logo opaque-logo" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-dark-opaque.png?raw=true" alt = "nescobar-dark-opaque">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-alt opaque-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-alt-dark-opaque.png?raw=true&quot; alt = &quot;nescobar-alt-dark-opaque&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-alt opaque-logo" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-dark-opaque.png?raw=true" alt = "nescobar-alt-dark-opaque">
                         </td>
             
                     </tr>
                     <tr>
                 
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-square opaque-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-dark.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-dark.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-square-dark<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-square opaque-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-square-dark.png?raw=true&quot; alt = &quot;nescobar-square-dark&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-square opaque-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-dark.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-square-dark.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-square-dark<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-logo opaque-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-dark-opaque.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-dark-opaque.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-dark-opaque<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-logo opaque-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-dark-opaque.png?raw=true&quot; alt = &quot;nescobar-dark-opaque&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-logo opaque-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-dark-opaque.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-dark-opaque.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-dark-opaque<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-alt opaque-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-dark-opaque.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-dark-opaque.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-alt-dark-opaque<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-alt opaque-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-alt-dark-opaque.png?raw=true&quot; alt = &quot;nescobar-alt-dark-opaque&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-alt opaque-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-dark-opaque.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-alt-dark-opaque.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-alt-dark-opaque<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
             
                     </tr>
             
-                    <tr><th class = "head"><h2>Light Opaque</h2></th><td></td><td></td></tr>
+                    <tr><th class = "head"><h2>Light Opaque</h2></th><th></th><th></th></tr>
                     <tr>
                 
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-square opaque-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-square-light.png?raw=true&quot; alt = &quot;nescobar-square-light&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-square opaque-logo" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-light.png?raw=true" alt = "nescobar-square-light">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-logo opaque-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-light-opaque.png?raw=true&quot; alt = &quot;nescobar-light-opaque&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-logo opaque-logo" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-light-opaque.png?raw=true" alt = "nescobar-light-opaque">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-alt opaque-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-alt-light-opaque.png?raw=true&quot; alt = &quot;nescobar-alt-light-opaque&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-alt opaque-logo" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-light-opaque.png?raw=true" alt = "nescobar-alt-light-opaque">
                         </td>
             
                     </tr>
                     <tr>
                 
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-square opaque-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-light.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-light.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-square-light<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-square opaque-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-square-light.png?raw=true&quot; alt = &quot;nescobar-square-light&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-square opaque-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-light.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-square-light.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-square-light<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-logo opaque-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-light-opaque.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-light-opaque.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-light-opaque<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-logo opaque-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-light-opaque.png?raw=true&quot; alt = &quot;nescobar-light-opaque&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-logo opaque-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-light-opaque.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-light-opaque.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-light-opaque<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-alt opaque-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-light-opaque.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-light-opaque.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-alt-light-opaque<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-alt opaque-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-alt-light-opaque.png?raw=true&quot; alt = &quot;nescobar-alt-light-opaque&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-alt opaque-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-light-opaque.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-alt-light-opaque.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-alt-light-opaque<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
             
                     </tr>
             
-                    <tr><th class = "head"><h2>Black</h2></th><td></td><td></td></tr>
+                    <tr><th class = "head"><h2>Black</h2></th><th></th><th></th></tr>
                     <tr>
                 
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-square&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-square-black.png?raw=true&quot; alt = &quot;nescobar-square-black&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-square" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-black.png?raw=true" alt = "nescobar-square-black">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-black.png?raw=true&quot; alt = &quot;nescobar-black&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-logo" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-black.png?raw=true" alt = "nescobar-black">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-alt&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-alt-black.png?raw=true&quot; alt = &quot;nescobar-alt-black&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-alt" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-black.png?raw=true" alt = "nescobar-alt-black">
                         </td>
             
                     </tr>
                     <tr>
                 
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-square<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-black.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-black.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-square-black<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-square&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-square-black.png?raw=true&quot; alt = &quot;nescobar-square-black&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-square<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-black.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-square-black.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-square-black<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-black.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-black.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-black<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-black.png?raw=true&quot; alt = &quot;nescobar-black&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-black.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-black.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-black<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-alt<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-black.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-black.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-alt-black<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-alt&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-alt-black.png?raw=true&quot; alt = &quot;nescobar-alt-black&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-alt<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-black.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-alt-black.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-alt-black<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
             
                     </tr>
             
-                    <tr><th class = "head"><h2>White</h2></th><td></td><td></td></tr>
+                    <tr><th class = "head"><h2>White</h2></th><th></th><th></th></tr>
                     <tr>
                 
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-square&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-square-white.png?raw=true&quot; alt = &quot;nescobar-square-white&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-square" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-white.png?raw=true" alt = "nescobar-square-white">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-white.png?raw=true&quot; alt = &quot;nescobar-white&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-logo" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-white.png?raw=true" alt = "nescobar-white">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-alt&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-alt-white.png?raw=true&quot; alt = &quot;nescobar-alt-white&quot;&gt;')"
+                        >
                             <img class = "logo nescobar-alt" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-white.png?raw=true" alt = "nescobar-alt-white">
                         </td>
             
                     </tr>
                     <tr>
                 
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-square<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-white.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-white.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-square-white<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-square&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-square-white.png?raw=true&quot; alt = &quot;nescobar-square-white&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-square<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-square-white.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-square-white.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-square-white<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-white.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-white.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-white<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-white.png?raw=true&quot; alt = &quot;nescobar-white&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-white.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-white.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-white<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-alt<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-white.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-white.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-alt-white<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nescobar-alt&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nescobar/nescobar-alt-white.png?raw=true&quot; alt = &quot;nescobar-alt-white&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nescobar-alt<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nescobar/nescobar-alt-white.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nescobar/nescobar-alt-white.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nescobar-alt-white<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
             
                     </tr>
@@ -309,66 +446,80 @@
                 <h1>nickesc Logos</h1>
         
                 <table>
-                    <tr><th class = "head"><h2>Dark</h2></th><td></td><td></td></tr>
+                    <tr><th class = "head"><h2>Dark</h2></th><th></th><th></th></tr>
                     <tr>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-square&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-square-dark.png?raw=true&quot; alt = &quot;nickesc-square-dark&quot;&gt;')"
+                        >
                             <img class = "logo nickesc-square" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-square-dark.png?raw=true" alt = "nickesc-dark">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-dark.png?raw=true&quot; alt = &quot;nickesc-dark&quot;&gt;')"
+                        >
                             <img class = "logo nickesc-logo" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-dark.png?raw=true" alt = "nickesc-dark">
                 
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-profile&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-profile-dark.png?raw=true&quot; alt = &quot;nickesc-profile-dark&quot;&gt;')"
+                        >
                             <img class = "logo nickesc-profile" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-profile-dark.png?raw=true" alt = "nickesc-profile-dark">
                         </td>
                     </tr>
             
             
                     <tr>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-square<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-square-dark.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-square-dark.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-square-dark<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-square&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-square-dark.png?raw=true&quot; alt = &quot;nickesc-square-dark&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-square<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-square-dark.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nickesc/nickesc-square-dark.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-square-dark<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-dark.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-dark.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-dark<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-dark.png?raw=true&quot; alt = &quot;nickesc-dark&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-dark.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nickesc/nickesc-dark.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-dark<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                 
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-profile<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-profile-dark.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-profile-dark.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-profile-dark<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-profile&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-profile-dark.png?raw=true&quot; alt = &quot;nickesc-profile-dark&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-profile<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-profile-dark.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nickesc/nickesc-profile-dark.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-profile-dark<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
                     </tr>
             
             
-                    <tr><th class = "head"><h2>Light</h2></th><td></td><td></td></tr>
+                    <tr><th class = "head"><h2>Light</h2></th><th></th><th></th></tr>
                     <tr>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-square&quot; src = https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-square-light.png?raw=true&quot; alt = &quot;nickesc-square-light&quot;&gt;')"
+                        >
                             <img class = "logo nickesc-square" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-square-light.png?raw=true" alt = "nickesc-light">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-light.png?raw=true&quot; alt = &quot;nickesc-light&quot;&gt;')"
+                        >
                             <img class = "logo nickesc-logo" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-light.png?raw=true" alt = "nickesc-light">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-profile&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-profile-light.png?raw=true&quot; alt = &quot;nickesc-profile-light&quot;&gt;')"
+                        >
                             <img class = "logo nickesc-profile" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-profile-light.png?raw=true" alt = "nickesc-profile-light">
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-square<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-square-light.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-square-light.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-square-light<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-square&quot; src = https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-square-light.png?raw=true&quot; alt = &quot;nickesc-square-light&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-square<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-square-light.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nickesc/nickesc-square-light.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-square-light<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-light.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-light.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-light<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-light.png?raw=true&quot; alt = &quot;nickesc-light&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-light.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nickesc/nickesc-light.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-light<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                 
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-profile-light<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-profile-light.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-profile-light.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-profile-light<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-profile&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-profile-light.png?raw=true&quot; alt = &quot;nickesc-profile-light&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-profile<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-profile-light.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nickesc/nickesc-profile-light.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-profile-light<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
                     </tr>
             
-                    <tr><th class = "head"><h2>Black</h2></th><td></td><td></td></tr>
+                    <tr><th class = "head"><h2>Black</h2></th><th></th><th></th></tr>
                     <tr>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-square&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-square-black.png?raw=true&quot; alt = &quot;nickesc-square-black&quot;&gt;')"
+                        >
                             <img class = "logo nickesc-square" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-square-black.png?raw=true" alt = "nickesc-black">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-black.png?raw=true&quot; alt = &quot;nickesc-black&quot;&gt;')"
+                        >
                             <img class = "logo nickesc-logo" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-black.png?raw=true" alt = "nickesc-black">
                         </td>
                         <td>
@@ -376,40 +527,47 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-square<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-square-black.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-square-black.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-square-black<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-square&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-square-black.png?raw=true&quot; alt = &quot;nickesc-square-black&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-square<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-square-black.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nickesc/nickesc-square-black.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-square-black<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-black.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-black.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-black<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-black.png?raw=true&quot; alt = &quot;nickesc-black&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-black.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nickesc/nickesc-black.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-black<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                 
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-profile<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-profile-black.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-profile-black.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-profile-black<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-profile&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-profile-black.png?raw=true&quot; alt = &quot;nickesc-profile-black&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-profile<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-profile-black.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nickesc/nickesc-profile-black.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-profile-black<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
                     </tr>
             
-                    <tr><th class = "head"><h2>White</h2></th><td></td><td></td></tr>
+                    <tr><th class = "head"><h2>White</h2></th><th></th><th></th></tr>
                     <tr>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-square&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-square-white.png?raw=true&quot; alt = &quot;nickesc-square-white&quot;&gt;')"
+                        >
                             <img class = "logo nickesc-square" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-square-white.png?raw=true" alt = "nickesc-white">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-white.png?raw=true&quot; alt = &quot;nickesc-white&quot;&gt;')"
+                        >
                             <img class = "logo nickesc-logo" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-white.png?raw=true" alt = "nickesc-white">
                         </td>
-                        <td>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-profile&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-profile-white.png?raw=true&quot; alt = &quot;nickesc-profile-white&quot;&gt;')">
                             <img class = "logo nickesc-profile" src = "https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-profile-white.png?raw=true" alt = "nickesc-profile-white">
                 
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-square<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-square-white.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-square-white.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-square-white<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-square&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-square-white.png?raw=true&quot; alt = &quot;nickesc-square-white&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-square<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-square-white.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nickesc/nickesc-square-white.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-square-white<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-white.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-white.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-white<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-logo&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-white.png?raw=true&quot; alt = &quot;nickesc-white&quot;&gt;')"
+                        >
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-logo<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-white.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nickesc/nickesc-white.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-white<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
-                        <td>
-                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-profile<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-profile-white.png?raw=true">https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-profile-white.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-profile-white<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
+                        <td onclick="updateClipboard('&lt;img class = &quot;logo nickesc-profile&quot; src = &quot;https://github.com/nickesc/N.‑Escobar‑Media-Branding/blob/main/Logos/nickesc/nickesc-profile-white.png?raw=true&quot; alt = &quot;nickesc-profile-white&quot;&gt;')">
+                            <ltgtColor>&lt;</ltgtColor><tagColor>img</tagColor> <varColor>class</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>logo nickesc-profile<quoteColor>"</quoteColor> <varColor>src</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor><a href="https://github.com/nickesc/N.-Escobar-Media-Branding/blob/main/Logos/nickesc/nickesc-profile-white.png?raw=true">https://github.com/nickesc/N.&#8209;Escobar&#8209;Media-Branding/blob/main/Logos/nickesc/nickesc-profile-white.png?raw=true</a><quoteColor>"</quoteColor> <varColor>alt</varColor>&nbsp;=&nbsp;<quoteColor>"</quoteColor>nickesc-profile-white<quoteColor>"</quoteColor><ltgtColor>&gt;</ltgtColor>
                         </td>
                     </tr>
         
@@ -418,6 +576,8 @@
             </div>
         
         </div>
+        
+        <div style = "size: 1vw; opacity:.5;text-align:center">N. Escobar Media © 2022</div>
     
     </body>
 </html>
